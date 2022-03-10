@@ -296,10 +296,17 @@ You can assume that every number in the array will be unique
 
 function twoSmallest(array){
     smallest = array[0];
-    secondSmallest = smallest;
+    secondSmallest = array[1];
 
     if (array.length < 2){
         return undefined;
+    }
+
+    if (array.length === 2){
+        if (array[0] > array[1]){
+            smallest = array[1];
+            secondSmallest = array[0];
+        } 
     }
 
     for (let i = 1; i < array.length; i++){
@@ -309,7 +316,7 @@ function twoSmallest(array){
     }
 
     for (let i = 0; i < array.length; i++){
-        if (array[i] > smallest && array[i] <= array[i+1]){
+        if (array[i] > smallest && array[i] < secondSmallest){
             secondSmallest = array[i];
         }
     }
@@ -321,10 +328,12 @@ function twoSmallest(array){
 /* console.logs to test */
 console.log("twoSmallest");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
-console.log(twoSmallest([ 6]));
-console.log(twoSmallest([ 6, 3]));
-console.log(twoSmallest([ 6, 3, 5, 2, 9 ]));
-console.log(twoSmallest([ -1, 3, 5, 2, 22, -20, 39, -4, -7, 8]));
+console.log(twoSmallest([6]));
+console.log(twoSmallest([3, 7]));
+console.log(twoSmallest([3, 1]));
+console.log(twoSmallest([2, 7, 5]));
+console.log(twoSmallest([6, 3, 5, 2, 9]));
+console.log(twoSmallest([-1, 3, 5, 2, 22, -20, 39, -4, -7, -10]));
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
