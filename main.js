@@ -188,15 +188,18 @@ function exclamationAndQuestion(str){
     // }
     // return true;
 
-    let newStr = "";
+    let exclaim = "";
+    let question = ""
 
     for (let i = 0; i < str.length; i++){
-        if (str[i] !== "!" && str[i] !== "?"){
-            newStr += str[i]
+        if (str[i] === "!"){
+            exclaim += str[i]
+        } else if (str[i] === "?"){
+            question += str[i]
         }
     }
 
-    if (newStr.length === (str.length)-2){
+    if (exclaim.length > 0 && question.length >0){
         return true;
     } else {
         return false;
@@ -210,6 +213,8 @@ console.log(exclamationAndQuestion("Hello"));
 console.log(exclamationAndQuestion("Hello!"));
 console.log(exclamationAndQuestion("Hello?"));
 console.log(exclamationAndQuestion("Hello!?"));
+console.log(exclamationAndQuestion("Samsung? Anycall?!"));
+console.log(exclamationAndQuestion("?????!"));
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
@@ -293,6 +298,10 @@ function twoSmallest(array){
     smallest = array[0];
     secondSmallest = smallest;
 
+    if (array.length < 2){
+        return undefined;
+    }
+
     for (let i = 1; i < array.length; i++){
         if (array[i] < smallest){
             smallest = array[i];
@@ -312,6 +321,8 @@ function twoSmallest(array){
 /* console.logs to test */
 console.log("twoSmallest");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(twoSmallest([ 6]));
+console.log(twoSmallest([ 6, 3]));
 console.log(twoSmallest([ 6, 3, 5, 2, 9 ]));
 console.log(twoSmallest([ -1, 3, 5, 2, 22, -20, 39, -4, -7, 8]));
 
